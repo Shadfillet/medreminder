@@ -13,7 +13,7 @@
         android:allowBackup="true"
         android:icon="@android:drawable/ic_popup_reminder"
         android:label="Med Reminder"
-        android:theme="@android:style/Theme.Material.Light.NoActionBar">
+                android:theme="@android:style/Theme.Material.NoActionBar">
 
         <activity android:name=".MainActivity" android:exported="true">
             <intent-filter>
