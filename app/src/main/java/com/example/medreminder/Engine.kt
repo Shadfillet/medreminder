@@ -196,6 +196,7 @@ object Engine {
 
         val n = NotificationCompat.Builder(c, CHANNEL_ID)
             .setSmallIcon(android.R.drawable.ic_popup_reminder)
+            .setColor(0xFFFF1493.toInt())
             .setContentTitle("Take ${med.name}")
             .setContentText(text)
             .setStyle(NotificationCompat.BigTextStyle().bigText(text))
