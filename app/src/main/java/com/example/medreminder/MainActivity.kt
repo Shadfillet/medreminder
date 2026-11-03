@@ -1,5 +1,6 @@
 package com.example.medreminder
-
+import androidx.compose.material3.darkColorScheme
+import androidx.compose.ui.graphics.Color
 import android.Manifest
 import android.app.AlertDialog
 import android.app.DatePickerDialog
@@ -45,7 +46,26 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import java.time.LocalDate
+private val Pink = Color(0xFFFF1493)
 
+private val PinkDark = darkColorScheme(
+    primary = Pink,
+    onPrimary = Color.White,
+    primaryContainer = Color(0xFF4A0A2C),
+    onPrimaryContainer = Color(0xFFFFD9E6),
+    secondary = Pink,
+    onSecondary = Color.White,
+    background = Color(0xFF121212),
+    onBackground = Color(0xFFEDEDED),
+    surface = Color(0xFF121212),
+    onSurface = Color(0xFFEDEDED),
+    surfaceVariant = Color(0xFF2A2A2A),
+    onSurfaceVariant = Color(0xFFCFCFCF),
+    surfaceContainerHighest = Color(0xFF242424),
+    outline = Color(0xFF5A5A5A),
+    errorContainer = Color(0xFF5C1A1A),
+    onErrorContainer = Color(0xFFFFDAD6),
+)
 class MainActivity : ComponentActivity() {
     private var refresh by mutableIntStateOf(0)
     private val askNotif =
@@ -57,8 +77,13 @@ class MainActivity : ComponentActivity() {
             checkSelfPermission(Manifest.permission.POST_NOTIFICATIONS) !=
             PackageManager.PERMISSION_GRANTED
         ) askNotif.launch(Manifest.permission.POST_NOTIFICATIONS)
-        setContent { MaterialTheme { Surface(Modifier.fillMaxSize()) { Screen() } } }
-    }
+        setContent {
+            MaterialTheme(colorScheme = PinkDark) {
+                Surface(Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
+                    Screen()
+                }
+            }
+                }    }
 
     override fun onResume() {
         super.onResume()
